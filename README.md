@@ -71,3 +71,16 @@ python manage.py startapp myapp
 
 Then add "myapp" to INSTALLED_APPS in settings.py.
 ############### End ###############
+########## Create Virtual Entiroment and Django on the VENV ###############
+Unistall django
+
+ - pip uninstall django
+
+Directory Create
+  - mkdir aiquest
+Go to aiquest
+  - cd aiquest
+create venv in the folder
+  - python -m venv env
+
+############ END ################
