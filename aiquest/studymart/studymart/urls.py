@@ -16,9 +16,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from machine_learning import views
+# from machine_learning import views as mlv
+from machine_learning.views import index as index_view,  deep_learning_view, about_view
+from About_us import views as auv
+from Data_Analysis import views as dav
+from Deep_learning import views as dlv
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.index, name='index'),
+    path('', index_view, name='index'),
+    path('deep-learning/', deep_learning_view, name='deep_learning'),
+    path('about/', about_view, name='about'),
+    path('about-us/', auv.about_us, name='about_us'),
+    path('data-analysis/', dav.data_analysis_view, name='data_analysis'),
+    path('deep-learning-view/', dlv.deep_learning_view, name='deep_learning_view'),
 ]

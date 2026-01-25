@@ -71,6 +71,8 @@ python manage.py startapp myapp
 
 Then add "myapp" to INSTALLED_APPS in settings.py.
 ############### End ###############
+
+
 ########## Create Virtual Entiroment and Django on the VENV ###############
 Unistall django
 
@@ -82,5 +84,34 @@ Go to aiquest
   - cd aiquest
 create venv in the folder
   - python -m venv env
+activate
+  - source D:/laragon/www/learn_with_django/aiquest/env/Scripts/activate
+we are on Script directory. check django exist or not
+  - pip list
+
+  Package    Version
+---------- -------
+pip        22.2.1
+setuptools 63.2.0
+
+install django
+  - pip install django
+check django eixt ot not
+    - pip list
+cd dir
+    - cd ..
+    - cd ..
+Create a Django project
+django-admin startproject myproject
+cd myproject
+
+App Create
+python manage.py startapp machine_learning
+
+Inner Project Setting.py te app install, view reate and route added into the inner urls.py
+
+
+5. Run the server
+python manage.py runserver
 
 ############ END ################
