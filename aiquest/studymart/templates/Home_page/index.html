@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyMart - Learn & Grow</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    
+    <!-- Custom CSS -->
+    <style>
+        :root {
+            --primary-color: #6366f1;
+            --secondary-color: #ec4899;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --info-color: #06b6d4;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        /* Header Styles */
+        .navbar {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            padding: 1rem 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .navbar-brand {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white !important;
+        }
+        
+        .nav-link {
+            color: rgba(255, 255, 255, 0.9) !important;
+            font-weight: 500;
+            margin: 0 0.5rem;
+            transition: all 0.3s;
+        }
+        
+        .nav-link:hover {
+            color: white !important;
+            transform: translateY(-2px);
+        }
+        
+        /* Banner Styles */
+        .banner-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .banner-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1516321497487-e288fb19713f?w=1200') center/cover;
+            opacity: 0.1;
+        }
+        
+        .banner-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .banner-title {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 1s;
+        }
+        
+        .banner-subtitle {
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1.2s;
+        }
+        
+        .btn-custom {
+            padding: 12px 35px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn-custom:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Products Section */
+        .products-section {
+            padding: 80px 0;
+            background-color: #f8f9fa;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-align: center;
+            color: #333;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+        
+        .product-card {
+            border: none;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            height: 100%;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .product-icon {
+            font-size: 3.5rem;
+            margin: 2rem 0 1rem;
+        }
+        
+        .card-bg-1 { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .card-bg-2 { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+        .card-bg-3 { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+        .card-bg-4 { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
+        .card-bg-5 { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+        .card-bg-6 { background: linear-gradient(135deg, #30cfd0 0%, #330867 100%); }
+        
+        /* Content Section */
+        .content-section {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .feature-box {
+            padding: 2rem;
+            border-radius: 15px;
+            background: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            transition: all 0.3s;
+        }
+        
+        .feature-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .icon-purple { color: var(--primary-color); }
+        .icon-pink { color: var(--secondary-color); }
+        .icon-green { color: var(--success-color); }
+        .icon-orange { color: var(--warning-color); }
+        .icon-cyan { color: var(--info-color); }
+        
+        /* Stats Section */
+        .stats-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 60px 0;
+            color: white;
+        }
+        
+        .stat-box {
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        /* Footer Styles */
+        .footer {
+            background: linear-gradient(135deg, #1e3a8a 0%, #312e81 100%);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer h5 {
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            color: #fbbf24;
+        }
+        
+        .footer a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .footer a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .social-icons a {
+            display: inline-block;
+            width: 45px;
+            height: 45px;
+            line-height: 45px;
+            text-align: center;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            margin-right: 10px;
+            font-size: 1.3rem;
+            transition: all 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background: var(--secondary-color);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 3rem;
+            padding-top: 2rem;
+            text-align: center;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .banner-title {
+                font-size: 2.5rem;
+            }
+            .banner-subtitle {
+                font-size: 1.1rem;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header/Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="bi bi-book-half"></i> StudyMart
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#"><i class="bi bi-house-door"></i> Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#products"><i class="bi bi-grid"></i> Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#features"><i class="bi bi-star"></i> Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about"><i class="bi bi-info-circle"></i> About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact"><i class="bi bi-envelope"></i> Contact</a>
+                    </li>
+                </ul>
+                <button class="btn btn-light ms-3 btn-custom">
+                    <i class="bi bi-person-plus"></i> Sign Up
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Banner Section -->
+    <section class="banner-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 banner-content">
+                    <h1 class="banner-title">Learn, Grow & Succeed</h1>
+                    <p class="banner-subtitle">Master Data Science, Machine Learning, and Deep Learning with expert-led courses</p>
+                    <div class="d-flex gap-3 flex-wrap">
+                        <button class="btn btn-light btn-custom">
+                            <i class="bi bi-play-circle"></i> Get Started
+                        </button>
+                        <button class="btn btn-outline-light btn-custom">
+                            <i class="bi bi-camera-video"></i> Watch Demo
+                        </button>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center mt-5 mt-lg-0">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600" 
+                         alt="Students Learning" 
+                         class="img-fluid rounded-4 shadow-lg"
+                         style="max-width: 500px;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products/Courses Section -->
+    <section class="products-section" id="products">
+        <div class="container">
+            <h2 class="section-title">Our Popular Courses</h2>
+            <p class="section-subtitle">Explore our wide range of cutting-edge courses designed for your success</p>
+            
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="card product-card card-bg-1 text-white text-center">
+                        <div class="card-body">
+                            <i class="bi bi-graph-up-arrow product-icon"></i>
+                            <h3 class="card-title">Data Analysis</h3>
+                            <p class="card-text">Master data visualization, statistical analysis, and data-driven decision making</p>
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li><i class="bi bi-check-circle"></i> Python & Pandas</li>
+                                <li><i class="bi bi-check-circle"></i> Data Visualization</li>
+                                <li><i class="bi bi-check-circle"></i> Statistical Analysis</li>
+                            </ul>
+                            <button class="btn btn-light btn-custom">Enroll Now</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="card product-card card-bg-2 text-white text-center">
+                        <div class="card-body">
+                            <i class="bi bi-robot product-icon"></i>
+                            <h3 class="card-title">Machine Learning</h3>
+                            <p class="card-text">Build intelligent systems with supervised and unsupervised learning algorithms</p>
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li><i class="bi bi-check-circle"></i> Scikit-Learn</li>
+                                <li><i class="bi bi-check-circle"></i> Model Training</li>
+                                <li><i class="bi bi-check-circle"></i> Prediction Systems</li>
+                            </ul>
+                            <button class="btn btn-light btn-custom">Enroll Now</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="card product-card card-bg-3 text-white text-center">
+                        <div class="card-body">
+                            <i class="bi bi-cpu product-icon"></i>
+                            <h3 class="card-title">Deep Learning</h3>
+                            <p class="card-text">Create neural networks and work with TensorFlow, Keras, and PyTorch</p>
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li><i class="bi bi-check-circle"></i> Neural Networks</li>
+                                <li><i class="bi bi-check-circle"></i> TensorFlow & Keras</li>
+                                <li><i class="bi bi-check-circle"></i> Computer Vision</li>
+                            </ul>
+                            <button class="btn btn-light btn-custom">Enroll Now</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="card product-card card-bg-4 text-white text-center">
+                        <div class="card-body">
+                            <i class="bi bi-code-slash product-icon"></i>
+                            <h3 class="card-title">Python Programming</h3>
+                            <p class="card-text">Start from basics to advanced Python programming concepts</p>
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li><i class="bi bi-check-circle"></i> Core Python</li>
+                                <li><i class="bi bi-check-circle"></i> OOP Concepts</li>
+                                <li><i class="bi bi-check-circle"></i> Advanced Topics</li>
+                            </ul>
+                            <button class="btn btn-light btn-custom">Enroll Now</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="card product-card card-bg-5 text-white text-center">
+                        <div class="card-body">
+                            <i class="bi bi-diagram-3 product-icon"></i>
+                            <h3 class="card-title">AI & NLP</h3>
+                            <p class="card-text">Natural Language Processing and Artificial Intelligence fundamentals</p>
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li><i class="bi bi-check-circle"></i> Text Processing</li>
+                                <li><i class="bi bi-check-circle"></i> Sentiment Analysis</li>
+                                <li><i class="bi bi-check-circle"></i> Chatbots</li>
+                            </ul>
+                            <button class="btn btn-light btn-custom">Enroll Now</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="card product-card card-bg-6 text-white text-center">
+                        <div class="card-body">
+                            <i class="bi bi-bar-chart product-icon"></i>
+                            <h3 class="card-title">Business Analytics</h3>
+                            <p class="card-text">Learn to make data-driven business decisions and strategies</p>
+                            <ul class="list-unstyled mt-3 mb-4">
+                                <li><i class="bi bi-check-circle"></i> Excel & SQL</li>
+                                <li><i class="bi bi-check-circle"></i> BI Tools</li>
+                                <li><i class="bi bi-check-circle"></i> Reporting</li>
+                            </ul>
+                            <button class="btn btn-light btn-custom">Enroll Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-6">
+                    <div class="stat-box">
+                        <div class="stat-number">10K+</div>
+                        <div class="stat-label">Students</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-box">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">Courses</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-box">
+                        <div class="stat-number">100+</div>
+                        <div class="stat-label">Expert Tutors</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-box">
+                        <div class="stat-number">95%</div>
+                        <div class="stat-label">Success Rate</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content/Features Section -->
+    <section class="content-section" id="features">
+        <div class="container">
+            <h2 class="section-title">Why Choose StudyMart?</h2>
+            <p class="section-subtitle">We provide the best learning experience with cutting-edge features</p>
+            
+            <div class="row">
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-box text-center">
+                        <i class="bi bi-people-fill feature-icon icon-purple"></i>
+                        <h4>Expert Instructors</h4>
+                        <p>Learn from industry professionals with years of real-world experience</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-box text-center">
+                        <i class="bi bi-clock-history feature-icon icon-pink"></i>
+                        <h4>Lifetime Access</h4>
+                        <p>Get unlimited access to course materials anytime, anywhere</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-box text-center">
+                        <i class="bi bi-award-fill feature-icon icon-green"></i>
+                        <h4>Certifications</h4>
+                        <p>Earn recognized certificates to boost your career prospects</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-box text-center">
+                        <i class="bi bi-phone feature-icon icon-orange"></i>
+                        <h4>Mobile Learning</h4>
+                        <p>Study on the go with our mobile-friendly platform</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-box text-center">
+                        <i class="bi bi-chat-dots-fill feature-icon icon-cyan"></i>
+                        <h4>24/7 Support</h4>
+                        <p>Get help whenever you need it from our support team</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-box text-center">
+                        <i class="bi bi-lightning-charge-fill feature-icon icon-purple"></i>
+                        <h4>Fast Learning</h4>
+                        <p>Accelerated learning paths designed for quick skill acquisition</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- About Section -->
+            <div class="row mt-5 align-items-center" id="about">
+                <div class="col-lg-6">
+                    <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600" 
+                         alt="About Us" 
+                         class="img-fluid rounded-4 shadow">
+                </div>
+                <div class="col-lg-6 mt-4 mt-lg-0">
+                    <h3 class="mb-4" style="color: var(--primary-color); font-weight: bold;">About StudyMart</h3>
+                    <p class="lead">We are dedicated to providing world-class education in Data Science, Machine Learning, and Artificial Intelligence.</p>
+                    <p>Our mission is to make quality education accessible to everyone. With a team of experienced instructors and a comprehensive curriculum, we help students achieve their career goals.</p>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="bi bi-check-circle-fill text-success"></i> Industry-relevant curriculum</li>
+                        <li class="mb-2"><i class="bi bi-check-circle-fill text-success"></i> Hands-on projects</li>
+                        <li class="mb-2"><i class="bi bi-check-circle-fill text-success"></i> Career guidance & support</li>
+                        <li class="mb-2"><i class="bi bi-check-circle-fill text-success"></i> Flexible learning schedules</li>
+                    </ul>
+                    <button class="btn btn-custom mt-3" style="background: var(--primary-color); color: white;">
+                        Learn More About Us
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5><i class="bi bi-book-half"></i> StudyMart</h5>
+                    <p>Empowering learners worldwide with cutting-edge courses in Data Science, Machine Learning, and AI.</p>
+                    <div class="social-icons mt-4">
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-twitter"></i></a>
+                        <a href="#"><i class="bi bi-linkedin"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5>Quick Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="bi bi-chevron-right"></i> Home</a></li>
+                        <li><a href="#products"><i class="bi bi-chevron-right"></i> Courses</a></li>
+                        <li><a href="#about"><i class="bi bi-chevron-right"></i> About Us</a></li>
+                        <li><a href="#"><i class="bi bi-chevron-right"></i> Blog</a></li>
+                        <li><a href="#"><i class="bi bi-chevron-right"></i> Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Popular Courses</h5>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="bi bi-chevron-right"></i> Data Analysis</a></li>
+                        <li><a href="#"><i class="bi bi-chevron-right"></i> Machine Learning</a></li>
+                        <li><a href="#"><i class="bi bi-chevron-right"></i> Deep Learning</a></li>
+                        <li><a href="#"><i class="bi bi-chevron-right"></i> Python</a></li>
+                        <li><a href="#"><i class="bi bi-chevron-right"></i> AI & NLP</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Contact Info</h5>
+                    <ul class="footer-links">
+                        <li><i class="bi bi-geo-alt"></i> 123 Learning Street, Education City</li>
+                        <li><i class="bi bi-telephone"></i> +1 (555) 123-4567</li>
+                        <li><i class="bi bi-envelope"></i> info@studymart.com</li>
+                        <li><i class="bi bi-clock"></i> Mon - Fri: 9AM - 6PM</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p class="mb-0">&copy; 2026 StudyMart. All rights reserved. | Designed with <i class="bi bi-heart-fill text-danger"></i> for learners</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.6s';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.product-card, .feature-box').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

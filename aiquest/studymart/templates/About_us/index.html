@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - StudyMart</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    
+    <!-- Custom CSS -->
+    <style>
+        :root {
+            --primary-color: #6366f1;
+            --secondary-color: #ec4899;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --info-color: #06b6d4;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        /* Header Styles */
+        .navbar {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            padding: 1rem 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .navbar-brand {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white !important;
+        }
+        
+        .nav-link {
+            color: rgba(255, 255, 255, 0.9) !important;
+            font-weight: 500;
+            margin: 0 0.5rem;
+            transition: all 0.3s;
+        }
+        
+        .nav-link:hover {
+            color: white !important;
+            transform: translateY(-2px);
+        }
+        
+        /* Banner Styles */
+        .banner-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 100px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .banner-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200') center/cover;
+            opacity: 0.1;
+        }
+        
+        .banner-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+        
+        .banner-title {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 1s;
+        }
+        
+        .banner-subtitle {
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1.2s;
+        }
+        
+        .breadcrumb-custom {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 50px;
+            display: inline-block;
+        }
+        
+        .breadcrumb-custom a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        /* Our Story Section */
+        .story-section {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-align: center;
+            color: #333;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+        
+        .story-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* Mission Vision Section */
+        .mission-section {
+            padding: 80px 0;
+            background-color: #f8f9fa;
+        }
+        
+        .mission-card {
+            padding: 2.5rem;
+            border-radius: 20px;
+            height: 100%;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .mission-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .mission-card.mission {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+        }
+        
+        .mission-card.vision {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+        }
+        
+        .mission-card.values {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            color: white;
+        }
+        
+        .mission-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Team Section */
+        .team-section {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .team-card {
+            border: none;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            background: white;
+        }
+        
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .team-img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+        
+        .team-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .team-name {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+        
+        .team-role {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .team-social a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            margin: 0 5px;
+            transition: all 0.3s;
+        }
+        
+        .team-social a:hover {
+            transform: translateY(-5px);
+        }
+        
+        /* Values Section */
+        .values-section {
+            padding: 80px 0;
+            background-color: #f8f9fa;
+        }
+        
+        .value-box {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 2rem;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            border-top: 4px solid transparent;
+        }
+        
+        .value-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .value-box.v1 { border-top-color: var(--primary-color); }
+        .value-box.v2 { border-top-color: var(--secondary-color); }
+        .value-box.v3 { border-top-color: var(--success-color); }
+        .value-box.v4 { border-top-color: var(--warning-color); }
+        .value-box.v5 { border-top-color: var(--info-color); }
+        .value-box.v6 { border-top-color: #8b5cf6; }
+        
+        .value-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .icon-purple { color: var(--primary-color); }
+        .icon-pink { color: var(--secondary-color); }
+        .icon-green { color: var(--success-color); }
+        .icon-orange { color: var(--warning-color); }
+        .icon-cyan { color: var(--info-color); }
+        .icon-violet { color: #8b5cf6; }
+        
+        /* Stats Section */
+        .stats-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 80px 0;
+            color: white;
+        }
+        
+        .stat-box {
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .stat-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        /* Testimonials Section */
+        .testimonials-section {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .testimonial-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            position: relative;
+            transition: all 0.3s;
+        }
+        
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .testimonial-card::before {
+            content: '"';
+            font-size: 6rem;
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            color: var(--primary-color);
+            opacity: 0.2;
+            font-family: Georgia, serif;
+        }
+        
+        .testimonial-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 1.5rem;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .author-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .author-name {
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .author-role {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .rating {
+            color: #fbbf24;
+            margin-bottom: 1rem;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            padding: 80px 0;
+            color: white;
+            text-align: center;
+        }
+        
+        .btn-custom {
+            padding: 12px 35px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn-custom:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Footer Styles */
+        .footer {
+            background: linear-gradient(135deg, #1e3a8a 0%, #312e81 100%);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer h5 {
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            color: #fbbf24;
+        }
+        
+        .footer a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .footer a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .social-icons a {
+            display: inline-block;
+            width: 45px;
+            height: 45px;
+            line-height: 45px;
+            text-align: center;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            margin-right: 10px;
+            font-size: 1.3rem;
+            transition: all 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background: var(--secondary-color);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 3rem;
+            padding-top: 2rem;
+            text-align: center;
+        }
+        
+        /* Timeline Section */
+        .timeline-section {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .timeline-item {
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            position: relative;
+            border-left: 4px solid var(--primary-color);
+            transition: all 0.3s;
+        }
+        
+        .timeline-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .timeline-year {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .banner-title {
+                font-size: 2.5rem;
+            }
+            .banner-subtitle {
+                font-size: 1.1rem;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            .stat-number {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header/Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <i class="bi bi-book-half"></i> StudyMart
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/"><i class="bi bi-house-door"></i> Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/#products"><i class="bi bi-grid"></i> Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/#features"><i class="bi bi-star"></i> Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#"><i class="bi bi-info-circle"></i> About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact"><i class="bi bi-envelope"></i> Contact</a>
+                    </li>
+                </ul>
+                <button class="btn btn-light ms-3 btn-custom">
+                    <i class="bi bi-person-plus"></i> Sign Up
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Banner Section -->
+    <section class="banner-section">
+        <div class="container">
+            <div class="banner-content">
+                <div class="breadcrumb-custom mb-4">
+                    <a href="/"><i class="bi bi-house-door"></i> Home</a> / About Us
+                </div>
+                <h1 class="banner-title">About StudyMart</h1>
+                <p class="banner-subtitle">Empowering minds, transforming futures through quality education</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Story Section -->
+    <section class="story-section">
+        <div class="container">
+            <h2 class="section-title">Our Story</h2>
+            <p class="section-subtitle">How we started our journey to revolutionize online education</p>
+            
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600" 
+                         alt="Our Story" 
+                         class="img-fluid rounded-4 shadow-lg">
+                </div>
+                <div class="col-lg-6">
+                    <div class="story-card">
+                        <h3 class="mb-4"><i class="bi bi-bookmark-star"></i> Our Journey</h3>
+                        <p class="lead mb-4">Founded in 2020, StudyMart began with a simple mission: to make quality education accessible to everyone, everywhere.</p>
+                        <p class="mb-3">What started as a small initiative by a group of passionate educators has now grown into a thriving online learning platform serving thousands of students worldwide.</p>
+                        <p class="mb-3">We believe that education is the key to unlocking human potential. Our platform combines cutting-edge technology with expert instruction to deliver an unparalleled learning experience.</p>
+                        <p>Today, we're proud to be at the forefront of the online education revolution, helping students achieve their dreams and build successful careers in Data Science, Machine Learning, and Artificial Intelligence.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission, Vision, Values Section -->
+    <section class="mission-section">
+        <div class="container">
+            <h2 class="section-title">Mission, Vision & Values</h2>
+            <p class="section-subtitle">The principles that guide us every day</p>
+            
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="mission-card mission">
+                        <div class="text-center">
+                            <i class="bi bi-bullseye mission-icon"></i>
+                            <h3 class="mb-3">Our Mission</h3>
+                            <p class="lead">To provide world-class, affordable education that empowers individuals to achieve their full potential and transform their careers.</p>
+                            <ul class="text-start mt-4">
+                                <li class="mb-2">Democratize quality education</li>
+                                <li class="mb-2">Bridge the skill gap</li>
+                                <li class="mb-2">Foster lifelong learning</li>
+                                <li class="mb-2">Build a global community</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="mission-card vision">
+                        <div class="text-center">
+                            <i class="bi bi-eye mission-icon"></i>
+                            <h3 class="mb-3">Our Vision</h3>
+                            <p class="lead">To be the world's leading platform for technology education, inspiring millions to learn, grow, and succeed.</p>
+                            <ul class="text-start mt-4">
+                                <li class="mb-2">Global reach and impact</li>
+                                <li class="mb-2">Innovation in education</li>
+                                <li class="mb-2">Excellence in teaching</li>
+                                <li class="mb-2">Student success stories</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="mission-card values">
+                        <div class="text-center">
+                            <i class="bi bi-gem mission-icon"></i>
+                            <h3 class="mb-3">Our Values</h3>
+                            <p class="lead">The core principles that shape our culture and drive our commitment to excellence.</p>
+                            <ul class="text-start mt-4">
+                                <li class="mb-2">Integrity & honesty</li>
+                                <li class="mb-2">Student-first approach</li>
+                                <li class="mb-2">Continuous improvement</li>
+                                <li class="mb-2">Collaboration & teamwork</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-6 mb-4 mb-md-0">
+                    <div class="stat-box">
+                        <i class="bi bi-people stat-icon"></i>
+                        <div class="stat-number">10,000+</div>
+                        <div class="stat-label">Happy Students</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-4 mb-md-0">
+                    <div class="stat-box">
+                        <i class="bi bi-book stat-icon"></i>
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">Quality Courses</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-box">
+                        <i class="bi bi-person-badge stat-icon"></i>
+                        <div class="stat-number">100+</div>
+                        <div class="stat-label">Expert Instructors</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-box">
+                        <i class="bi bi-trophy stat-icon"></i>
+                        <div class="stat-number">95%</div>
+                        <div class="stat-label">Success Rate</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="container">
+            <h2 class="section-title">Meet Our Team</h2>
+            <p class="section-subtitle">The talented people behind StudyMart's success</p>
+            
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="team-card">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400" 
+                             alt="John Smith" 
+                             class="team-img">
+                        <div class="team-info">
+                            <h4 class="team-name">John Smith</h4>
+                            <p class="team-role">CEO & Founder</p>
+                            <p class="text-muted">Leading our vision with 15+ years in EdTech</p>
+                            <div class="team-social">
+                                <a href="#"><i class="bi bi-linkedin"></i></a>
+                                <a href="#"><i class="bi bi-twitter"></i></a>
+                                <a href="#"><i class="bi bi-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-3">
+                    <div class="team-card">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400" 
+                             alt="Sarah Johnson" 
+                             class="team-img">
+                        <div class="team-info">
+                            <h4 class="team-name">Sarah Johnson</h4>
+                            <p class="team-role">Chief Learning Officer</p>
+                            <p class="text-muted">Curriculum expert with PhD in Education</p>
+                            <div class="team-social">
+                                <a href="#"><i class="bi bi-linkedin"></i></a>
+                                <a href="#"><i class="bi bi-twitter"></i></a>
+                                <a href="#"><i class="bi bi-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-3">
+                    <div class="team-card">
+                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400" 
+                             alt="Michael Chen" 
+                             class="team-img">
+                        <div class="team-info">
+                            <h4 class="team-name">Michael Chen</h4>
+                            <p class="team-role">Head of Technology</p>
+                            <p class="text-muted">Tech innovator & AI specialist</p>
+                            <div class="team-social">
+                                <a href="#"><i class="bi bi-linkedin"></i></a>
+                                <a href="#"><i class="bi bi-twitter"></i></a>
+                                <a href="#"><i class="bi bi-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-3">
+                    <div class="team-card">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400" 
+                             alt="Emily Davis" 
+                             class="team-img">
+                        <div class="team-info">
+                            <h4 class="team-name">Emily Davis</h4>
+                            <p class="team-role">Student Success Manager</p>
+                            <p class="text-muted">Dedicated to student achievement</p>
+                            <div class="team-social">
+                                <a href="#"><i class="bi bi-linkedin"></i></a>
+                                <a href="#"><i class="bi bi-twitter"></i></a>
+                                <a href="#"><i class="bi bi-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Values Section -->
+    <section class="values-section">
+        <div class="container">
+            <h2 class="section-title">Our Core Values</h2>
+            <p class="section-subtitle">The principles that define who we are and guide what we do</p>
+            
+            <div class="row">
+                <div class="col-md-6 col-lg-4">
+                    <div class="value-box v1">
+                        <i class="bi bi-star-fill value-icon icon-purple"></i>
+                        <h4 class="mb-3">Excellence</h4>
+                        <p>We strive for excellence in everything we do, from course content to student support, ensuring the highest quality learning experience.</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="value-box v2">
+                        <i class="bi bi-heart-fill value-icon icon-pink"></i>
+                        <h4 class="mb-3">Passion</h4>
+                        <p>Our passion for education drives us to innovate, inspire, and empower students to reach their full potential.</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="value-box v3">
+                        <i class="bi bi-shield-check value-icon icon-green"></i>
+                        <h4 class="mb-3">Integrity</h4>
+                        <p>We operate with transparency, honesty, and ethical practices in all our interactions with students and partners.</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="value-box v4">
+                        <i class="bi bi-lightbulb-fill value-icon icon-orange"></i>
+                        <h4 class="mb-3">Innovation</h4>
+                        <p>We embrace new technologies and teaching methods to create engaging, effective learning experiences.</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="value-box v5">
+                        <i class="bi bi-globe value-icon icon-cyan"></i>
+                        <h4 class="mb-3">Accessibility</h4>
+                        <p>Education should be available to everyone. We work to remove barriers and make learning accessible worldwide.</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4">
+                    <div class="value-box v6">
+                        <i class="bi bi-people-fill value-icon icon-violet"></i>
+                        <h4 class="mb-3">Community</h4>
+                        <p>We foster a supportive, collaborative learning community where students and instructors grow together.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section class="timeline-section">
+        <div class="container">
+            <h2 class="section-title">Our Journey</h2>
+            <p class="section-subtitle">Key milestones in our growth story</p>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">2020</div>
+                    <h4><i class="bi bi-rocket-takeoff"></i> The Beginning</h4>
+                    <p>StudyMart was founded with a vision to democratize education in Data Science and AI. Started with just 5 courses and 100 students.</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">2021</div>
+                    <h4><i class="bi bi-graph-up-arrow"></i> Rapid Growth</h4>
+                    <p>Expanded to 20+ courses and reached 1,000+ students. Launched our mobile app for learning on the go.</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">2022</div>
+                    <h4><i class="bi bi-award"></i> Recognition</h4>
+                    <p>Won "Best Online Learning Platform" award. Introduced certification programs and partnered with leading tech companies.</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">2023</div>
+                    <h4><i class="bi bi-globe"></i> Global Expansion</h4>
+                    <p>Reached 5,000+ students across 50+ countries. Launched advanced AI and Machine Learning specializations.</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">2024</div>
+                    <h4><i class="bi bi-trophy"></i> Milestone Achievement</h4>
+                    <p>Crossed 10,000+ students with 95% success rate. Launched corporate training programs and B2B solutions.</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">2025-2026</div>
+                    <h4><i class="bi bi-stars"></i> Future Forward</h4>
+                    <p>Continuing to innovate with AI-powered personalized learning, expanding course offerings, and building the future of education.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="container">
+            <h2 class="section-title">What Our Students Say</h2>
+            <p class="section-subtitle">Real stories from real students who transformed their careers</p>
+            
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="testimonial-card">
+                        <div class="rating mb-3">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                        </div>
+                        <p class="testimonial-text">StudyMart changed my life! The Machine Learning course was comprehensive and the instructors were incredibly supportive. I landed my dream job as a Data Scientist!</p>
+                        <div class="testimonial-author">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150" 
+                                 alt="Jessica Williams" 
+                                 class="author-img">
+                            <div>
+                                <div class="author-name">Jessica Williams</div>
+                                <div class="author-role">Data Scientist at Tech Corp</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="testimonial-card">
+                        <div class="rating mb-3">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                        </div>
+                        <p class="testimonial-text">The best investment I've made in my career. The Deep Learning course was challenging but rewarding. The hands-on projects gave me real-world experience.</p>
+                        <div class="testimonial-author">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150" 
+                                 alt="David Martinez" 
+                                 class="author-img">
+                            <div>
+                                <div class="author-name">David Martinez</div>
+                                <div class="author-role">AI Engineer at StartupXYZ</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="testimonial-card">
+                        <div class="rating mb-3">
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                            <i class="bi bi-star-fill"></i>
+                        </div>
+                        <p class="testimonial-text">Exceptional learning platform! The community support and career guidance helped me transition from a non-tech background to becoming a successful ML engineer.</p>
+                        <div class="testimonial-author">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150" 
+                                 alt="Priya Sharma" 
+                                 class="author-img">
+                            <div>
+                                <div class="author-name">Priya Sharma</div>
+                                <div class="author-role">ML Engineer at Global Tech</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="display-4 mb-4">Ready to Start Your Learning Journey?</h2>
+            <p class="lead mb-5">Join thousands of students who are already transforming their careers with StudyMart</p>
+            <div class="d-flex gap-3 justify-content-center flex-wrap">
+                <button class="btn btn-light btn-custom btn-lg">
+                    <i class="bi bi-rocket-takeoff"></i> Browse Courses
+                </button>
+                <button class="btn btn-outline-light btn-custom btn-lg">
+                    <i class="bi bi-telephone"></i> Contact Us
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5><i class="bi bi-book-half"></i> StudyMart</h5>
+                    <p>Empowering learners worldwide with cutting-edge courses in Data Science, Machine Learning, and AI.</p>
+                    <div class="social-icons mt-4">
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-twitter"></i></a>
+                        <a href="#"><i class="bi bi-linkedin"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5>Quick Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="/"><i class="bi bi-chevron-right"></i> Home</a></li>
+                        <li><a href="/#products"><i class="bi bi-chevron-right"></i> Courses</a></li>
+                        <li><a href="#"><i class="bi bi-chevron-right"></i> About Us</a></li>
+                        <li><a href="#"><i class="bi bi-chevron-right"></i> Blog</a></li>
+                        <li><a href="#contact"><i class="bi bi-chevron-right"></i> Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Popular Courses</h5>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="bi bi-chevron-right"></i> Data Analysis</a></li>
+                        <li><a href="#"><i class="bi bi-chevron-right"></i> Machine Learning</a></li>
+                        <li><a href="#"><i class="bi bi-chevron-right"></i> Deep Learning</a></li>
+                        <li><a href="#"><i class="bi bi-chevron-right"></i> Python</a></li>
+                        <li><a href="#"><i class="bi bi-chevron-right"></i> AI & NLP</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Contact Info</h5>
+                    <ul class="footer-links">
+                        <li><i class="bi bi-geo-alt"></i> 123 Learning Street, Education City</li>
+                        <li><i class="bi bi-telephone"></i> +1 (555) 123-4567</li>
+                        <li><i class="bi bi-envelope"></i> info@studymart.com</li>
+                        <li><i class="bi bi-clock"></i> Mon - Fri: 9AM - 6PM</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p class="mb-0">&copy; 2026 StudyMart. All rights reserved. | Designed with <i class="bi bi-heart-fill text-danger"></i> for learners</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.6s';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.team-card, .value-box, .testimonial-card, .timeline-item').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Counter animation for stats
+        const counters = document.querySelectorAll('.stat-number');
+        counters.forEach(counter => {
+            const target = counter.innerText;
+            const updateCounter = () => {
+                const count = parseInt(counter.innerText.replace(/\D/g, ''));
+                const increment = Math.ceil(parseInt(target.replace(/\D/g, '')) / 100);
+                
+                if (count < parseInt(target.replace(/\D/g, ''))) {
+                    counter.innerText = (count + increment).toLocaleString() + target.replace(/[0-9,]/g, '');
+                    setTimeout(updateCounter, 20);
+                } else {
+                    counter.innerText = target;
+                }
+            };
+            
+            const statsObserver = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        counter.innerText = '0';
+                        updateCounter();
+                        statsObserver.unobserve(entry.target);
+                    }
+                });
+            });
+            
+            statsObserver.observe(counter);
+        });
+    </script>
+</body>
+</html>

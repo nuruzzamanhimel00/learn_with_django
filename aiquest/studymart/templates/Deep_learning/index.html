@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deep Learning Course - StudyMart</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    
+    <!-- Custom CSS -->
+    <style>
+        :root {
+            --primary-color: #6366f1;
+            --secondary-color: #ec4899;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --info-color: #06b6d4;
+            --course-color: #4facfe;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        /* Header Styles */
+        .navbar {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            padding: 1rem 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .navbar-brand {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: white !important;
+        }
+        
+        .nav-link {
+            color: rgba(255, 255, 255, 0.9) !important;
+            font-weight: 500;
+            margin: 0 0.5rem;
+            transition: all 0.3s;
+        }
+        
+        .nav-link:hover {
+            color: white !important;
+            transform: translateY(-2px);
+        }
+        
+        /* Banner Styles */
+        .banner-section {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .banner-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200') center/cover;
+            opacity: 0.15;
+        }
+        
+        .banner-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .banner-title {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 1s;
+        }
+        
+        .banner-subtitle {
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1.2s;
+        }
+        
+        .breadcrumb-custom {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px 20px;
+            border-radius: 50px;
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+        
+        .breadcrumb-custom a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .course-badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px 20px;
+            border-radius: 50px;
+            display: inline-block;
+            margin: 5px;
+            font-size: 0.9rem;
+        }
+        
+        .btn-custom {
+            padding: 12px 35px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn-custom:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Course Overview Section */
+        .overview-section {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-align: center;
+            color: #333;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            transition: all 0.3s;
+            border-left: 4px solid;
+            border-image: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%) 1;
+        }
+        
+        .feature-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+        
+        /* Curriculum Section */
+        .curriculum-section {
+            padding: 80px 0;
+            background-color: #f8f9fa;
+        }
+        
+        .module-card {
+            background: white;
+            border-radius: 15px;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+        }
+        
+        .module-card:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .module-header {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .module-body {
+            padding: 1.5rem;
+        }
+        
+        .module-body ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .module-body ul li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .module-body ul li:last-child {
+            border-bottom: none;
+        }
+        
+        .module-body ul li i {
+            color: var(--success-color);
+            margin-right: 10px;
+        }
+        
+        /* Stats Section */
+        .stats-section {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            padding: 60px 0;
+            color: white;
+        }
+        
+        .stat-box {
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .stat-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        /* Tools Section */
+        .tools-section {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .tool-box {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 2rem;
+            transition: all 0.3s;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+        }
+        
+        .tool-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .tool-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        /* Instructor Section */
+        .instructor-section {
+            padding: 80px 0;
+            background-color: #f8f9fa;
+        }
+        
+        .instructor-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .instructor-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid;
+            border-image: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%) 1;
+            border-radius: 50%;
+        }
+        
+        /* Pricing Section */
+        .pricing-section {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .pricing-card {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: all 0.3s;
+            border: 3px solid transparent;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+        
+        .pricing-card.featured {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            transform: scale(1.05);
+        }
+        
+        .price {
+            font-size: 3rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 1.5rem 0;
+        }
+        
+        .pricing-card.featured .price {
+            -webkit-text-fill-color: white;
+        }
+        
+        .pricing-features {
+            list-style: none;
+            padding: 0;
+            margin: 2rem 0;
+        }
+        
+        .pricing-features li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        .pricing-card.featured .pricing-features li {
+            border-bottom-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        /* FAQ Section */
+        .faq-section {
+            padding: 80px 0;
+            background-color: #f8f9fa;
+        }
+        
+        .faq-item {
+            background: white;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+        
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s;
+        }
+        
+        .faq-question:hover {
+            background-color: #f8f9fa;
+        }
+        
+        .faq-answer {
+            padding: 0 1.5rem 1.5rem;
+            color: #666;
+            line-height: 1.8;
+        }
+        
+        /* Footer Styles */
+        .footer {
+            background: linear-gradient(135deg, #1e3a8a 0%, #312e81 100%);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer h5 {
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            color: #fbbf24;
+        }
+        
+        .footer a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .footer a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .social-icons a {
+            display: inline-block;
+            width: 45px;
+            height: 45px;
+            line-height: 45px;
+            text-align: center;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            margin-right: 10px;
+            font-size: 1.3rem;
+            transition: all 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background: var(--secondary-color);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 3rem;
+            padding-top: 2rem;
+            text-align: center;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .banner-title {
+                font-size: 2.5rem;
+            }
+            .banner-subtitle {
+                font-size: 1.1rem;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            .instructor-card {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header/Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <i class="bi bi-book-half"></i> StudyMart
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/"><i class="bi bi-house-door"></i> Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/#products"><i class="bi bi-grid"></i> Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/#features"><i class="bi bi-star"></i> Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about"><i class="bi bi-info-circle"></i> About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact"><i class="bi bi-envelope"></i> Contact</a>
+                    </li>
+                </ul>
+                <button class="btn btn-light ms-3 btn-custom">
+                    <i class="bi bi-person-plus"></i> Enroll Now
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Banner Section -->
+    <section class="banner-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-7 banner-content">
+                    <div class="breadcrumb-custom">
+                        <a href="/"><i class="bi bi-house-door"></i> Home</a> / <a href="/#products">Courses</a> / Deep Learning
+                    </div>
+                    <h1 class="banner-title"><i class="bi bi-cpu"></i> Deep Learning Specialization</h1>
+                    <p class="banner-subtitle">Master neural networks, TensorFlow, Keras, and PyTorch for cutting-edge AI applications</p>
+                    <div class="mb-4">
+                        <span class="course-badge"><i class="bi bi-clock"></i> 20 Weeks</span>
+                        <span class="course-badge"><i class="bi bi-people"></i> 2,800+ Students</span>
+                        <span class="course-badge"><i class="bi bi-star-fill"></i> 4.9/5 Rating</span>
+                        <span class="course-badge"><i class="bi bi-award"></i> Certificate</span>
+                    </div>
+                    <div class="d-flex gap-3 flex-wrap">
+                        <button class="btn btn-light btn-custom btn-lg">
+                            <i class="bi bi-play-circle"></i> Start Learning
+                        </button>
+                        <button class="btn btn-outline-light btn-custom btn-lg">
+                            <i class="bi bi-download"></i> Download Syllabus
+                        </button>
+                    </div>
+                </div>
+                <div class="col-lg-5 text-center mt-5 mt-lg-0">
+                    <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=500" 
+                         alt="Deep Learning" 
+                         class="img-fluid rounded-4 shadow-lg">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Course Stats -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-6 mb-3 mb-md-0">
+                    <div class="stat-box">
+                        <i class="bi bi-people stat-icon"></i>
+                        <div class="stat-number">2,800+</div>
+                        <div class="stat-label">Students Enrolled</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-3 mb-md-0">
+                    <div class="stat-box">
+                        <i class="bi bi-collection-play stat-icon"></i>
+                        <div class="stat-number">250+</div>
+                        <div class="stat-label">Video Lectures</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-box">
+                        <i class="bi bi-file-code stat-icon"></i>
+                        <div class="stat-number">100+</div>
+                        <div class="stat-label">Coding Exercises</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-box">
+                        <i class="bi bi-clock-history stat-icon"></i>
+                        <div class="stat-number">200+</div>
+                        <div class="stat-label">Learning Hours</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Course Overview -->
+    <section class="overview-section">
+        <div class="container">
+            <h2 class="section-title">What You'll Master</h2>
+            <p class="section-subtitle">Build state-of-the-art deep learning models from scratch</p>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="feature-card">
+                        <i class="bi bi-check-circle-fill feature-icon"></i>
+                        <h4>Neural Networks</h4>
+                        <p>Understand the architecture and mathematics behind neural networks, from perceptrons to deep architectures.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="feature-card">
+                        <i class="bi bi-check-circle-fill feature-icon"></i>
+                        <h4>Convolutional Neural Networks</h4>
+                        <p>Master CNNs for computer vision tasks including image classification, object detection, and segmentation.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="feature-card">
+                        <i class="bi bi-check-circle-fill feature-icon"></i>
+                        <h4>Recurrent Neural Networks</h4>
+                        <p>Learn RNNs, LSTMs, and GRUs for sequential data, time series, and natural language processing.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="feature-card">
+                        <i class="bi bi-check-circle-fill feature-icon"></i>
+                        <h4>TensorFlow & Keras</h4>
+                        <p>Build production-ready deep learning models using industry-standard frameworks.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="feature-card">
+                        <i class="bi bi-check-circle-fill feature-icon"></i>
+                        <h4>PyTorch</h4>
+                        <p>Implement cutting-edge research models using PyTorch's dynamic computational graphs.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="feature-card">
+                        <i class="bi bi-check-circle-fill feature-icon"></i>
+                        <h4>Transfer Learning & GANs</h4>
+                        <p>Apply transfer learning and create generative models with GANs for innovative applications.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Curriculum Section -->
+    <section class="curriculum-section">
+        <div class="container">
+            <h2 class="section-title">Course Curriculum</h2>
+            <p class="section-subtitle">Comprehensive deep learning curriculum from basics to advanced</p>
+            
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="module-card">
+                        <div class="module-header">
+                            <h4><i class="bi bi-1-circle"></i> Introduction to Deep Learning</h4>
+                            <i class="bi bi-chevron-down"></i>
+                        </div>
+                        <div class="module-body">
+                            <ul>
+                                <li><i class="bi bi-play-circle"></i> What is Deep Learning?</li>
+                                <li><i class="bi bi-play-circle"></i> Deep Learning vs Machine Learning</li>
+                                <li><i class="bi bi-play-circle"></i> Applications of Deep Learning</li>
+                                <li><i class="bi bi-play-circle"></i> Setting up DL Environment</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="module-card">
+                        <div class="module-header">
+                            <h4><i class="bi bi-2-circle"></i> Neural Networks Fundamentals</h4>
+                            <i class="bi bi-chevron-down"></i>
+                        </div>
+                        <div class="module-body">
+                            <ul>
+                                <li><i class="bi bi-play-circle"></i> Perceptron & Multi-layer Perceptron</li>
+                                <li><i class="bi bi-play-circle"></i> Activation Functions</li>
+                                <li><i class="bi bi-play-circle"></i> Forward & Backward Propagation</li>
+                                <li><i class="bi bi-play-circle"></i> Gradient Descent & Optimization</li>
+                                <li><i class="bi bi-play-circle"></i> Loss Functions</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="module-card">
+                        <div class="module-header">
+                            <h4><i class="bi bi-3-circle"></i> TensorFlow & Keras</h4>
+                            <i class="bi bi-chevron-down"></i>
+                        </div>
+                        <div class="module-body">
+                            <ul>
+                                <li><i class="bi bi-play-circle"></i> TensorFlow Basics</li>
+                                <li><i class="bi bi-play-circle"></i> Keras Sequential API</li>
+                                <li><i class="bi bi-play-circle"></i> Keras Functional API</li>
+                                <li><i class="bi bi-play-circle"></i> Custom Layers & Models</li>
+                                <li><i class="bi bi-play-circle"></i> Callbacks & Checkpoints</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="module-card">
+                        <div class="module-header">
+                            <h4><i class="bi bi-4-circle"></i> Convolutional Neural Networks</h4>
+                            <i class="bi bi-chevron-down"></i>
+                        </div>
+                        <div class="module-body">
+                            <ul>
+                                <li><i class="bi bi-play-circle"></i> CNN Architecture & Convolution Operation</li>
+                                <li><i class="bi bi-play-circle"></i> Pooling Layers & Feature Maps</li>
+                                <li><i class="bi bi-play-circle"></i> Famous CNN Architectures (VGG, ResNet, Inception)</li>
+                                <li><i class="bi bi-play-circle"></i> Image Classification Projects</li>
+                                <li><i class="bi bi-play-circle"></i> Object Detection (YOLO, R-CNN)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="module-card">
+                        <div class="module-header">
+                            <h4><i class="bi bi-5-circle"></i> Recurrent Neural Networks</h4>
+                            <i class="bi bi-chevron-down"></i>
+                        </div>
+                        <div class="module-body">
+                            <ul>
+                                <li><i class="bi bi-play-circle"></i> RNN Architecture & Applications</li>
+                                <li><i class="bi bi-play-circle"></i> Long Short-Term Memory (LSTM)</li>
+                                <li><i class="bi bi-play-circle"></i> Gated Recurrent Units (GRU)</li>
+                                <li><i class="bi bi-play-circle"></i> Sequence-to-Sequence Models</li>
+                                <li><i class="bi bi-play-circle"></i> Time Series Forecasting</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="module-card">
+                        <div class="module-header">
+                            <h4><i class="bi bi-6-circle"></i> Natural Language Processing</h4>
+                            <i class="bi bi-chevron-down"></i>
+                        </div>
+                        <div class="module-body">
+                            <ul>
+                                <li><i class="bi bi-play-circle"></i> Word Embeddings (Word2Vec, GloVe)</li>
+                                <li><i class="bi bi-play-circle"></i> Text Classification</li>
+                                <li><i class="bi bi-play-circle"></i> Sentiment Analysis</li>
+                                <li><i class="bi bi-play-circle"></i> Attention Mechanism</li>
+                                <li><i class="bi bi-play-circle"></i> Transformers & BERT</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="module-card">
+                        <div class="module-header">
+                            <h4><i class="bi bi-7-circle"></i> Generative Models</h4>
+                            <i class="bi bi-chevron-down"></i>
+                        </div>
+                        <div class="module-body">
+                            <ul>
+                                <li><i class="bi bi-play-circle"></i> Autoencoders & Variational Autoencoders</li>
+                                <li><i class="bi bi-play-circle"></i> Generative Adversarial Networks (GANs)</li>
+                                <li><i class="bi bi-play-circle"></i> DCGAN & StyleGAN</li>
+                                <li><i class="bi bi-play-circle"></i> Image Generation Projects</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="module-card">
+                        <div class="module-header">
+                            <h4><i class="bi bi-8-circle"></i> PyTorch Framework</h4>
+                            <i class="bi bi-chevron-down"></i>
+                        </div>
+                        <div class="module-body">
+                            <ul>
+                                <li><i class="bi bi-play-circle"></i> PyTorch Tensors & Autograd</li>
+                                <li><i class="bi bi-play-circle"></i> Building Models with PyTorch</li>
+                                <li><i class="bi bi-play-circle"></i> PyTorch Data Loaders</li>
+                                <li><i class="bi bi-play-circle"></i> Transfer Learning with PyTorch</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="module-card">
+                        <div class="module-header">
+                            <h4><i class="bi bi-9-circle"></i> Advanced Topics</h4>
+                            <i class="bi bi-chevron-down"></i>
+                        </div>
+                        <div class="module-body">
+                            <ul>
+                                <li><i class="bi bi-play-circle"></i> Transfer Learning & Fine-tuning</li>
+                                <li><i class="bi bi-play-circle"></i> Regularization Techniques</li>
+                                <li><i class="bi bi-play-circle"></i> Batch Normalization</li>
+                                <li><i class="bi bi-play-circle"></i> Model Interpretability</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="module-card">
+                        <div class="module-header">
+                            <h4><i class="bi bi-10-circle"></i> Capstone Projects</h4>
+                            <i class="bi bi-chevron-down"></i>
+                        </div>
+                        <div class="module-body">
+                            <ul>
+                                <li><i class="bi bi-play-circle"></i> Image Classification with CNNs</li>
+                                <li><i class="bi bi-play-circle"></i> Object Detection System</li>
+                                <li><i class="bi bi-play-circle"></i> Chatbot using RNNs</li>
+                                <li><i class="bi bi-play-circle"></i> Image Generation with GANs</li>
+                                <li><i class="bi bi-play-circle"></i> Final Research Project</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools & Technologies -->
+    <section class="tools-section">
+        <div class="container">
+            <h2 class="section-title">Tools & Frameworks</h2>
+            <p class="section-subtitle">Master the most powerful deep learning frameworks</p>
+            
+            <div class="row">
+                <div class="col-md-3 col-6">
+                    <div class="tool-box">
+                        <i class="bi bi-file-code tool-icon"></i>
+                        <h5>Python</h5>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="tool-box">
+                        <i class="bi bi-diagram-3 tool-icon"></i>
+                        <h5>TensorFlow</h5>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="tool-box">
+                        <i class="bi bi-layers tool-icon"></i>
+                        <h5>Keras</h5>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="tool-box">
+                        <i class="bi bi-fire tool-icon"></i>
+                        <h5>PyTorch</h5>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="tool-box">
+                        <i class="bi bi-calculator tool-icon"></i>
+                        <h5>NumPy</h5>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="tool-box">
+                        <i class="bi bi-table tool-icon"></i>
+                        <h5>Pandas</h5>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="tool-box">
+                        <i class="bi bi-gpu-card tool-icon"></i>
+                        <h5>CUDA</h5>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="tool-box">
+                        <i class="bi bi-journal-code tool-icon"></i>
+                        <h5>Jupyter</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instructor Section -->
+    <section class="instructor-section">
+        <div class="container">
+            <h2 class="section-title">Meet Your Instructor</h2>
+            <p class="section-subtitle">Learn from leading AI researchers and practitioners</p>
+            
+            <div class="instructor-card">
+                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=300" 
+                     alt="Dr. James Wilson" 
+                     class="instructor-img">
+                <div>
+                    <h3>Dr. James Wilson</h3>
+                    <p class="text-muted mb-3"><i class="bi bi-briefcase"></i> AI Research Scientist at DeepMind | <i class="bi bi-award"></i> PhD in Deep Learning</p>
+                    <p class="lead mb-3">Dr. Wilson is a renowned expert in deep learning with 15+ years of research experience. He has contributed to groundbreaking papers in computer vision and NLP.</p>
+                    <p>His work on neural architectures has been cited over 10,000 times. He's dedicated to making deep learning education accessible and practical for aspiring AI engineers.</p>
+                    <div class="mt-3">
+                        <span class="badge bg-primary me-2"><i class="bi bi-people"></i> 12,000+ Students</span>
+                        <span class="badge bg-success me-2"><i class="bi bi-star-fill"></i> 4.9 Rating</span>
+                        <span class="badge bg-info"><i class="bi bi-book"></i> 6 Courses</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing-section">
+        <div class="container">
+            <h2 class="section-title">Choose Your Plan</h2>
+            <p class="section-subtitle">Invest in your AI career today</p>
+            
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="pricing-card">
+                        <h3>Basic</h3>
+                        <div class="price">$199</div>
+                        <p class="text-muted">One-time payment</p>
+                        <ul class="pricing-features">
+                            <li><i class="bi bi-check-circle"></i> Full course access</li>
+                            <li><i class="bi bi-check-circle"></i> 250+ video lectures</li>
+                            <li><i class="bi bi-check-circle"></i> Code exercises</li>
+                            <li><i class="bi bi-check-circle"></i> Community support</li>
+                            <li><i class="bi bi-x-circle text-muted"></i> Certificate</li>
+                            <li><i class="bi bi-x-circle text-muted"></i> GPU access</li>
+                        </ul>
+                        <button class="btn btn-outline-primary btn-custom w-100">Get Started</button>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="pricing-card featured">
+                        <div class="badge bg-warning text-dark mb-3">RECOMMENDED</div>
+                        <h3>Professional</h3>
+                        <div class="price">$349</div>
+                        <p>One-time payment</p>
+                        <ul class="pricing-features">
+                            <li><i class="bi bi-check-circle"></i> Everything in Basic</li>
+                            <li><i class="bi bi-check-circle"></i> Verified certificate</li>
+                            <li><i class="bi bi-check-circle"></i> GPU cloud access</li>
+                            <li><i class="bi bi-check-circle"></i> 10+ capstone projects</li>
+                            <li><i class="bi bi-check-circle"></i> Career resources</li>
+                            <li><i class="bi bi-check-circle"></i> Priority Q&A</li>
+                        </ul>
+                        <button class="btn btn-light btn-custom w-100">Enroll Now</button>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="pricing-card">
+                        <h3>Premium</h3>
+                        <div class="price">$499</div>
+                        <p class="text-muted">One-time payment</p>
+                        <ul class="pricing-features">
+                            <li><i class="bi bi-check-circle"></i> Everything in Professional</li>
+                            <li><i class="bi bi-check-circle"></i> 6 x 1-on-1 mentoring</li>
+                            <li><i class="bi bi-check-circle"></i> Research paper guidance</li>
+                            <li><i class="bi bi-check-circle"></i> Portfolio building</li>
+                            <li><i class="bi bi-check-circle"></i> Interview prep</li>
+                            <li><i class="bi bi-check-circle"></i> Job referrals</li>
+                        </ul>
+                        <button class="btn btn-outline-primary btn-custom w-100">Get Started</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <p class="section-subtitle">Common questions about the deep learning course</p>
+            
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Do I need a GPU to take this course?</span>
+                            <i class="bi bi-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            While a GPU is helpful, it's not required. Professional and Premium plans include cloud GPU access for training models.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>What are the prerequisites for this course?</span>
+                            <i class="bi bi-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            You should have Python programming knowledge and basic understanding of machine learning concepts. Linear algebra and calculus knowledge is beneficial but we provide refresher modules.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>How long does the course take to complete?</span>
+                            <i class="bi bi-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            The course is designed for 20 weeks at 10-12 hours per week. However, you have lifetime access to learn at your own pace.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Will I get hands-on projects?</span>
+                            <i class="bi bi-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            Yes! The course includes over 100 coding exercises and 10+ comprehensive capstone projects covering computer vision, NLP, and generative models.
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            <span>Do you offer refunds?</span>
+                            <i class="bi bi-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            Yes! We offer a 30-day money-back guarantee. If you're not satisfied with the course, get a full refund within 30 days of enrollment.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5><i class="bi bi-book-half"></i> StudyMart</h5>
+                    <p>Empowering learners worldwide with cutting-edge courses in Data Science, Machine Learning, and AI.</p>
+                    <div class="social-icons mt-4">
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-twitter"></i></a>
+                        <a href="#"><i class="bi bi-linkedin"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5>Quick Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="/"><i class="bi bi-chevron-right"></i> Home</a></li>
+                        <li><a href="/#products"><i class="bi bi-chevron-right"></i> Courses</a></li>
+                        <li><a href="/about"><i class="bi bi-chevron-right"></i> About Us</a></li>
+                        <li><a href="#"><i class="bi bi-chevron-right"></i> Blog</a></li>
+                        <li><a href="#contact"><i class="bi bi-chevron-right"></i> Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Popular Courses</h5>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="bi bi-chevron-right"></i> Data Analysis</a></li>
+                        <li><a href="#"><i class="bi bi-chevron-right"></i> Machine Learning</a></li>
+                        <li><a href="#"><i class="bi bi-chevron-right"></i> Deep Learning</a></li>
+                        <li><a href="#"><i class="bi bi-chevron-right"></i> Python</a></li>
+                        <li><a href="#"><i class="bi bi-chevron-right"></i> AI & NLP</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Contact Info</h5>
+                    <ul class="footer-links">
+                        <li><i class="bi bi-geo-alt"></i> 123 Learning Street, Education City</li>
+                        <li><i class="bi bi-telephone"></i> +1 (555) 123-4567</li>
+                        <li><i class="bi bi-envelope"></i> info@studymart.com</li>
+                        <li><i class="bi bi-clock"></i> Mon - Fri: 9AM - 6PM</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p class="mb-0">&copy; 2026 StudyMart. All rights reserved. | Designed with <i class="bi bi-heart-fill text-danger"></i> for learners</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // FAQ Toggle
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', function() {
+                const answer = this.nextElementSibling;
+                const icon = this.querySelector('i');
+                
+                if (answer.style.display === 'block') {
+                    answer.style.display = 'none';
+                    icon.classList.remove('bi-chevron-up');
+                    icon.classList.add('bi-chevron-down');
+                } else {
+                    document.querySelectorAll('.faq-answer').forEach(a => a.style.display = 'none');
+                    document.querySelectorAll('.faq-question i').forEach(i => {
+                        i.classList.remove('bi-chevron-up');
+                        i.classList.add('bi-chevron-down');
+                    });
+                    
+                    answer.style.display = 'block';
+                    icon.classList.remove('bi-chevron-down');
+                    icon.classList.add('bi-chevron-up');
+                }
+            });
+        });
+
+        // Animation on scroll
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.6s';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.feature-card, .module-card, .tool-box').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

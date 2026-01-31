@@ -3,7 +3,8 @@ from django.http import HttpResponse
 
 # Create your views here.
 def index(request):
-    return HttpResponse("Hello, world!")
+    return render(request, 'Machine_Learning/index.html')
+
 
 def deep_learning_view(request):
     return HttpResponse("This is the Deep Learning view.")

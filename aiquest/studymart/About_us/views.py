@@ -4,4 +4,5 @@ from django.http import HttpResponse
 # Create your views here.
 
 def about_us(request):
-    return HttpResponse("This is the About Us page of StudyMart.")
+    return render(request, 'About_us/index.html')
+

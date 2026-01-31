@@ -3,4 +3,4 @@ from django.http import HttpResponse
 
 # Create your views here.
 def data_analysis_view(request):
-    return HttpResponse("This is the Data Analysis page of StudyMart.")
+    return render(request, 'Data_Analysis/index.html')
