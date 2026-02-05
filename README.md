@@ -115,3 +115,16 @@ Inner Project Setting.py te app install, view reate and route added into the inn
 python manage.py runserver
 
 ############ END ################
+
+########## Model && Migration ########
+show migraiton: (dir: /d/laragon/www/learn_with_django/aiquest/studymart)
+python manage.py showmigrations
+
+after creating Modal make migraiton
+python manage.py makemigrations
+
+Run the migrate command:
+
+python manage.py migrate
+
+########## Model && Migration end ########
