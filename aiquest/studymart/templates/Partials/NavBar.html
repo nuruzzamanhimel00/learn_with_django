@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
         <div class="container">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="{% url 'home.index' %}">
                 <i class="bi bi-book-half"></i> StudyMart
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -9,17 +9,18 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#"><i class="bi bi-house-door"></i> Home</a>
+                        <a class="nav-link active" href="{% url 'home.index' %}"><i class="bi bi-house-door"></i> Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#products"><i class="bi bi-grid"></i> Courses</a>
+                        <a class="nav-link" href="{% url 'data_analysis_view.index' %}"><i class="bi bi-grid"></i> Data Analysis</a>
+                    </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="{% url 'about_us.index' %}"><i class="bi bi-info-circle"></i> About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#features"><i class="bi bi-star"></i> Features</a>
+                        <a class="nav-link" href="{% url 'deep_learning_view.index' %}"><i class="bi bi-star"></i> Deep Learning</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about"><i class="bi bi-info-circle"></i> About</a>
-                    </li>
+                   
                     <li class="nav-item">
                         <a class="nav-link" href="#contact"><i class="bi bi-envelope"></i> Contact</a>
                     </li>
